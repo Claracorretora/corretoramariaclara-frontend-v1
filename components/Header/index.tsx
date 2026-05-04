@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, MessagesSquare, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import logo from "@/public/logo.jpeg";
 import Image from "next/image";
@@ -46,8 +46,6 @@ export const NavLink: React.FC<NavbarProps> = ({
 const navigation = [
   { name: "Início", href: "/" },
   { name: "Imóveis", href: "/imoveis" },
-  { name: "Sobre", href: "/sobre" },
-  { name: "Contatos", href: "/contatos" },
 ];
 
 export default function Header() {
@@ -90,6 +88,7 @@ export default function Header() {
           >
             <Button className="bg-gray-800 hover:bg-red-500 transition-colors cursor-pointer rounded-full px-6 py-5">
               Fale com a corretora
+              <MessagesSquare className="ml-1" />
             </Button>
           </Link>
         </div>
@@ -137,6 +136,7 @@ export default function Header() {
               >
                 <Button className="w-full bg-gray-800 hover:bg-red-500 transition-colors cursor-pointer rounded-full py-6 text-base">
                   Fale com a corretora
+                  <MessagesSquare className="ml-1" />
                 </Button>
               </Link>
             </div>

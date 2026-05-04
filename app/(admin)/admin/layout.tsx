@@ -5,15 +5,7 @@ import type React from "react";
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import {
-  LogOut,
-  Home,
-  Package,
-  ShoppingCart,
-  Menu,
-  X,
-  Mail,
-} from "lucide-react";
+import { LogOut, Home, Menu, X, BookOpenText } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/public/logo.png";
@@ -49,9 +41,7 @@ export default function AdminLayout({
 
   const navigation = [
     { name: "Dashboard", href: "/admin/dashboard", icon: Home },
-    { name: "Mensagens", href: "/admin/mensagens", icon: Mail },
-    { name: "Pedidos", href: "/admin/pedidos", icon: ShoppingCart },
-    { name: "Produtos", href: "/admin/produtos", icon: Package },
+    { name: "Catálogo", href: "/admin/catalogo", icon: BookOpenText },
   ];
 
   return (

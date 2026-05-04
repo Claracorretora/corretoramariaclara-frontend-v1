@@ -2,6 +2,7 @@ import Image from "next/image";
 import image from "@/public/hero.png";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { MessagesSquare } from "lucide-react";
 
 export default function HomeCTA() {
   return (
@@ -34,6 +35,7 @@ export default function HomeCTA() {
           >
             <Button className="bg-red-500 text-white hover:bg-red-600 rounded-full px-8 py-6 font-medium shrink-0 cursor-pointer">
               Fale com a corretora
+              <MessagesSquare className="ml-1" />
             </Button>
           </Link>
         </div>
