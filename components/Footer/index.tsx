@@ -1,0 +1,126 @@
+import Link from "next/link";
+import Image from "next/image";
+import logo from "@/public/logo.jpeg";
+import { FaInstagram, FaWhatsapp } from "react-icons/fa";
+
+const navigation = [
+  { name: "Início", href: "/" },
+  { name: "Imóveis", href: "/imoveis" },
+  { name: "Sobre", href: "/sobre" },
+  { name: "Contato", href: "/contatos" },
+];
+
+export default function Footer() {
+  return (
+    <footer id="contato" className="bg-gray-800 text-white">
+      <div className="mx-auto max-w-7xl px-4 xl:px-0 py-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+          <div>
+            <Link href="/" className="flex items-center gap-2 mb-4">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-600">
+                <Image
+                  src={logo}
+                  alt="Logo Maria Clara Corretora"
+                  className="rounded-lg"
+                />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-sm font-bold leading-tight">
+                  MARIA CLARA
+                </span>
+                <span className="text-xs leading-tight">CORRETORA</span>
+              </div>
+            </Link>
+
+            <p className="text-sm leading-relaxed">
+              Especialista em encontrar o imóvel ideal para você e sua família.
+            </p>
+
+            <div className="mt-4 flex items-center justify-start gap-4">
+              <a
+                href="https://www.instagram.com/mariaclara_corretorarcoverde/"
+                className="text-white hover:text-red-500 transition-all duration-300 hover:scale-110"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
+                <FaInstagram size={24} />
+              </a>
+
+              <a
+                href="https://wa.me/5587999380401"
+                className="text-white hover:text-green-500 transition-all duration-300 hover:scale-110"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+              >
+                <FaWhatsapp size={24} />
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-4">Navegação</h4>
+            <ul className="space-y-2">
+              {navigation.map((item) => (
+                <li key={item.name}>
+                  <Link
+                    href={item.href}
+                    className="text-sm transition-colors hover:text-white/70 hover:underline"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-4">Contato</h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link
+                  href="tel:+5587999380401"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-white/70 hover:underline"
+                >
+                  (87) 99938-0401
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="mailto:mariaclaracorretora87@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-white/70 hover:underline"
+                >
+                  mariaclaracorretora87@gmail.com
+                </Link>
+              </li>
+              <li className="pt-2">
+                <Link
+                  href="https://maps.app.goo.gl/2pcP7onscYyLxZcCA"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-white/70 hover:underline"
+                >
+                  <span>Stand Loteamento Teresópolis, 56510-600</span>
+                  <br />
+                  <span>Arcoverde - PE</span>
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="border-t mt-12 pt-8 flex flex-col items-center justify-center">
+          <p>
+            © {new Date().getFullYear()} Maria Clara Corretora. Todos os
+            direitos reservados.
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}
