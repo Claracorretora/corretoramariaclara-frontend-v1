@@ -5,6 +5,11 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --color-clara-primary: var(--clara-primary);
+  --color-clara-secondary: var(--clara-secondary);
+  --color-clara-tertiary: var(--clara-tertiary);
+  --color-clara-quaternary: var(--clara-quaternary);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
@@ -49,6 +54,11 @@
 }
 
 :root {
+  --clara-primary: #FFF9E1;
+  --clara-secondary: #FF5454;
+  --clara-tertiary: #2D2E2E;
+  --clara-quaternary: #0C0C0C;
+
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);

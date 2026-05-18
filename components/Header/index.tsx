@@ -29,8 +29,8 @@ export const NavLink: React.FC<NavbarProps> = ({
     : "transition-colors";
 
   const activeStyle = isActive
-    ? "text-red-500 underline underline-offset-4 decoration-2 decoration-red-500 bg-red-50/50 lg:bg-transparent"
-    : "text-gray-800 hover:underline hover:underline-offset-4 hover:decoration-2 hover:decoration-red-500 hover:bg-muted lg:hover:bg-transparent";
+    ? "text-[#FF5454] underline underline-offset-4 decoration-2 decoration-[#FF5454] bg-[#FF5454]/5 lg:bg-transparent"
+    : "text-[#2D2E2E] hover:underline hover:underline-offset-4 hover:decoration-2 hover:decoration-[#FF5454]";
 
   return (
     <Link
@@ -89,7 +89,7 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Button className="bg-gray-800 hover:bg-red-500 transition-colors cursor-pointer rounded-full px-6 py-5">
+            <Button className="bg-[#2D2E2E] hover:bg-[#FF5454] transition-colors cursor-pointer rounded-full px-6 py-5">
               Anuncie Aqui
               <MessagesSquare className="ml-1" />
             </Button>
@@ -107,11 +107,13 @@ export default function Header() {
               <X
                 className="h-7 w-7 transition-all cursor-pointer"
                 aria-hidden="true"
+                color="#FF5454"
               />
             ) : (
               <Menu
                 className="h-7 w-7 transition-all cursor-pointer"
                 aria-hidden="true"
+                color="#2D2E2E"
               />
             )}
           </button>
@@ -133,11 +135,11 @@ export default function Header() {
             ))}
             <div className="pt-4">
               <Link
-                href="https://wa.me/5587999380401"
+                href="https://wa.me/5587999380401?text=Olá! Gostaria de saber como faço para indicar meu imóvel."
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button className="w-full bg-gray-800 hover:bg-red-500 transition-colors cursor-pointer rounded-full py-6 text-base">
+                <Button className="w-full bg-[#2D2E2E] hover:bg-[#FF5454] transition-colors cursor-pointer rounded-full py-6 text-base">
                   Anuncie Aqui
                   <MessagesSquare className="ml-1" />
                 </Button>

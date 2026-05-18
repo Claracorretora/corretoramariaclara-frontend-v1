@@ -66,8 +66,8 @@ export default function Companies() {
     <div className="space-y-6">
       <div className="flex flex-wrap justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Empresas</h1>
-          <p className="text-gray-600">Gerencie suas empresas</p>
+          <h1 className="text-3xl font-bold text-gray-900">Imóveis</h1>
+          <p className="text-gray-600">Gerencie seus imóveis</p>
         </div>
 
         {/* <DialogCreateCompany onCreated={fetchCompanies} /> */}
@@ -77,7 +77,7 @@ export default function Companies() {
         <div className="relative flex-1 max-w-sm">
           <Search className="absolute left-3 top-2 h-4 w-4" />
           <Input
-            placeholder="Buscar empresas..."
+            placeholder="Buscar imóveis..."
             value={searchTerm}
             onChange={(e) => {
               setPage(1);
@@ -89,15 +89,15 @@ export default function Companies() {
         <div className="text-sm text-gray-600">
           {loading
             ? "Carregando..."
-            : `${filteredCompanies.length} de ${total} empresas encontradas`}
+            : `${filteredCompanies.length} de ${total} imóveis encontrados`}
         </div>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Lista de empresas</CardTitle>
+          <CardTitle>Lista de imóveis</CardTitle>
           <CardDescription>
-            Gerencie todas as empresas da sua lista
+            Gerencie todos os imóveis da sua lista
           </CardDescription>
         </CardHeader>
         <CardContent>

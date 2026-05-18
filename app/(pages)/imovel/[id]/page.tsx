@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { FaWhatsapp } from "react-icons/fa";
 
-export default function ImovelPage() {
+export default function PropertyPage() {
   const property = {
     title: "Sobrado mobiliado",
     price: "R$ 380.000",
@@ -16,8 +16,8 @@ export default function ImovelPage() {
     vagas: 1,
   };
 
-  const whatsappNumber = "5587999380401";
   const handleWhatsAppClick = () => {
+    const whatsappNumber = "5587999380401";
     const message = `Olá! Gostaria de mais informações sobre o imóvel:
 *${property.title}*
 Valor: ${property.price}
@@ -30,7 +30,7 @@ Configuração: ${property.bedrooms} quartos, ${property.bathrooms} banheiros e 
   };
 
   return (
-    <main className="max-w-7xl mx-auto px-4 xl:px-0 pt-6 pb-10 bg-white">
+    <main className="max-w-7xl mx-auto px-4 xl:px-0 py-10">
       {/* --- Galeria de Imagens --- */}
       <section className="grid grid-cols-1 md:grid-cols-4 gap-2 h-75 md:h-125 mb-8 rounded-xl overflow-hidden">
         <div className="md:col-span-2 relative bg-gray-200">
@@ -150,7 +150,7 @@ Configuração: ${property.bedrooms} quartos, ${property.bathrooms} banheiros e 
 
               <Button
                 onClick={handleWhatsAppClick}
-                className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white py-7 text-lg gap-3 transition-transform cursor-pointer shadow-lg hover:scale-95 font-extralight"
+                className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white py-7 text-lg gap-3 transition-colors cursor-pointer font-extralight"
               >
                 Saiba Mais via WhatsApp
               </Button>

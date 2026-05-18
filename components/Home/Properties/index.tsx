@@ -55,13 +55,13 @@ const properties = [
 
 export default function HomeProperties() {
   return (
-    <section id="imoveis" className="py-16">
+    <section id="imoveis" className="py-10 bg-muted/50">
       <div className="mx-auto max-w-7xl px-4 xl:px-0">
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-2xl font-extralight">Imóveis em destaque</h2>
           <Link
             href="/imoveis"
-            className="flex items-center gap-1 text-sm font-extralight border-red-500 border px-4 py-2 rounded text-red-500 hover:scale-105 transition-transform"
+            className="flex items-center gap-1 text-sm font-extralight border-clara-secondary border px-4 py-2 rounded text-clara-secondary hover:border-clara-tertiary hover:text-clara-tertiary transition-colors"
           >
             Ver todos
             <ArrowRight className="h-4 w-4" />
@@ -88,9 +88,9 @@ export default function HomeProperties() {
                 key={index}
                 className="pl-4 basis-1/1 md:basis-1/2 lg:basis-1/4"
               >
-                <div>
+                <Link href={`/imovel/aa`}>
                   <PropertyCard {...property} />
-                </div>
+                </Link>
               </CarouselItem>
             ))}
           </CarouselContent>

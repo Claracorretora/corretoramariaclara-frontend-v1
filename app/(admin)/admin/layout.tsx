@@ -29,7 +29,7 @@ export default function AdminLayout({
       setUserName(res.firstName);
       setUserLastName(res.lastName);
     } catch (error) {
-      toast.error("Erro ao buscar dados do dashboard");
+      toast.error("Erro ao buscar dados do usuário");
     } finally {
       setLoading(false);
     }
@@ -40,7 +40,6 @@ export default function AdminLayout({
   }, []);
 
   const navigation = [
-    { name: "Dashboard", href: "/admin/dashboard", icon: Home },
     { name: "Catálogo", href: "/admin/catalogo", icon: BookOpenText },
   ];
 
@@ -56,7 +55,7 @@ export default function AdminLayout({
 
       {/* Sidebar */}
       <div
-        className={`fixed inset-y-0 left-0 z-50 w-64 bg-gray-800 shadow-lg transform transition-transform duration-300 ease-in-out lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-50 w-64 bg-clara-tertiary shadow-lg transform transition-transform duration-300 ease-in-out lg:translate-x-0 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -66,7 +65,7 @@ export default function AdminLayout({
           </Link>
           <button
             onClick={() => setSidebarOpen(false)}
-            className="lg:hidden text-white hover:text-red-500 cursor-pointer transition-colors"
+            className="lg:hidden text-white hover:text-clara-secondary cursor-pointer transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -82,8 +81,8 @@ export default function AdminLayout({
                 href={item.href}
                 className={`flex items-center px-6 py-3 text-sm font-medium transition-colors ${
                   isActive
-                    ? "bg-white border-r-2 border-red-500"
-                    : "text-white hover:bg-red-500"
+                    ? "bg-clara-primary border-r-2 border-clara-secondary"
+                    : "hover:bg-clara-secondary"
                 }`}
                 onClick={() => setSidebarOpen(false)}
               >
@@ -97,7 +96,7 @@ export default function AdminLayout({
         <div className="absolute bottom-0 left-0 right-0 p-6">
           <Button
             onClick={LogoutAdminService}
-            className="w-full bg-red-500 hover:bg-red-600 cursor-pointer"
+            className="w-full bg-clara-secondary hover:bg-clara-quaternary cursor-pointer"
           >
             <LogOut className="w-4 h-4 mr-2" />
             Sair
@@ -108,22 +107,13 @@ export default function AdminLayout({
       {/* Main content */}
       <div className="lg:pl-64">
         {/* Top bar */}
-        <div className="bg-white shadow-sm border-b h-16 flex items-center justify-between px-6">
+        <div className="bg-clara-primary shadow-sm border-b h-16 flex items-center justify-between px-6 lg:justify-end">
           <button
             onClick={() => setSidebarOpen(true)}
             className="lg:hidden text-gray-500 hover:text-gray-700 cursor-pointer"
           >
             <Menu className="w-5 h-5" />
           </button>
-
-          <div className="flex items-center space-x-4">
-            <Link
-              href="/"
-              className="text-sm text-gray-600 hover:text-olive-600"
-            >
-              Ver Site
-            </Link>
-          </div>
 
           <div className="flex items-center space-x-4">
             <p>

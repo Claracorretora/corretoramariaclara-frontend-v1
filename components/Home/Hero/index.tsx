@@ -133,7 +133,7 @@ export default function HomeHero() {
                   </div>
                 </div>
 
-                <Button className="w-full md:w-auto bg-red-500 hover:bg-red-600 text-white px-10 h-12 rounded-xl shadow-lg shadow-red-200 transition-all active:scale-95 font-bold cursor-pointer hover:scale-105">
+                <Button className="w-full md:w-auto bg-clara-secondary hover:bg-clara-tertiary text-white px-10 h-12 rounded-xl transition-all font-bold cursor-pointer">
                   <Search className="mr-2 h-4 w-4" />
                   BUSCAR
                 </Button>
