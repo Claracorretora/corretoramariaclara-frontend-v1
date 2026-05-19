@@ -57,7 +57,7 @@ const steps = [
 
 export default function PageFinancing() {
   return (
-    <div className="min-h-screen bg-slate-50">
+    <main className="min-h-screen bg-slate-50">
       {/* --- HERO SECTION --- */}
       <section className="relative bg-clara-tertiary py-20 px-4 xl:px-0">
         <div className="max-w-5xl mx-auto text-center text-white">
@@ -194,6 +194,6 @@ export default function PageFinancing() {
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }

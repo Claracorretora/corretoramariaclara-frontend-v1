@@ -12,11 +12,13 @@ export default function Home() {
   return (
     <>
       <Header />
-      <HomeHero />
-      <HomeRentals />
-      <HomeProperties />
-      <HomeLands />
-      <HomeCTA />
+      <main>
+        <HomeHero />
+        <HomeRentals />
+        <HomeProperties />
+        <HomeLands />
+        <HomeCTA />
+      </main>
       <Footer />
       <GTS />
       <WhatsAppButton />

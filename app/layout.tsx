@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
 import { Toaster } from "@/components/ui/sonner";
+import { TanstackQueryProvider } from "@/hooks/useTanstackQueryProvider";
 
 export const metadata: Metadata = {
   title: "Corretora em Arcoverde | Maria Clara | Imóveis e Consultoria",
@@ -51,7 +51,9 @@ export default function RootLayout({
     <html lang="en" className={`h-full antialiased`}>
       <AuthProvider>
         <body className="min-h-full flex flex-col">
-          {children} <Toaster richColors position="top-right" />
+          <TanstackQueryProvider>
+            {children} <Toaster richColors position="top-right" />
+          </TanstackQueryProvider>
         </body>
       </AuthProvider>
     </html>

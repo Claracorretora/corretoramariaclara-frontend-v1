@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useState } from "react";
-import { LoginAdminService } from "@/services/Auth";
+import { LoginAdminService } from "@/services/auth.service";
 import { useRouter } from "next/navigation";
 
 interface AuthContextProps {
@@ -27,7 +27,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       await LoginAdminService({ email, password });
       setIsAuthenticated(true);
-      router.push("/admin/dashboard");
+      router.push("/admin/catalogo");
     } catch (error: any) {
       throw error;
     }
