@@ -14,8 +14,8 @@ import { AlertCircle, Eye, EyeOff, Lock, User } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/public/logo.jpeg";
-import { AuthContext } from "@/context/AuthContext";
 import { loginSchema } from "@/schemas/auth.schema";
+import { LoginAdminService } from "@/services/auth.service";
 
 type FormValues = z.infer<typeof loginSchema>;
 
@@ -23,8 +23,6 @@ export default function AdminLogin() {
   const [showPassword, setShowPassword] = useState(false);
 
   const router = useRouter();
-
-  const { LoginAdmin } = useContext(AuthContext);
 
   const {
     register,
@@ -37,7 +35,7 @@ export default function AdminLogin() {
 
   const loginMutation = useMutation({
     mutationFn: async (data: FormValues) => {
-      return await LoginAdmin(data);
+      return await LoginAdminService(data);
     },
 
     onSuccess: () => {

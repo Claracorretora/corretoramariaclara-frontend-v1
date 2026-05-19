@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { AuthProvider } from "@/context/AuthContext";
 import { Toaster } from "@/components/ui/sonner";
 import { TanstackQueryProvider } from "@/hooks/useTanstackQueryProvider";
 
@@ -49,13 +48,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`h-full antialiased`}>
-      <AuthProvider>
-        <body className="min-h-full flex flex-col">
-          <TanstackQueryProvider>
-            {children} <Toaster richColors position="top-right" />
-          </TanstackQueryProvider>
-        </body>
-      </AuthProvider>
+      <body className="min-h-full flex flex-col">
+        <TanstackQueryProvider>
+          {children} <Toaster richColors position="top-right" />
+        </TanstackQueryProvider>
+      </body>
     </html>
   );
 }
