@@ -19,6 +19,8 @@ export async function FindAllProperties(
   type?: string,
   purpose?: string,
 ) {
+  const headers = await getAuthHeaders();
+
   try {
     const queryParams = new URLSearchParams();
 
@@ -35,6 +37,7 @@ export async function FindAllProperties(
 
     const res = await apiRequest(url, {
       method: "GET",
+      headers,
     });
 
     return res;
@@ -113,20 +116,3 @@ export async function DeleteProperty(id: string) {
     };
   }
 }
-
-// export async function RemoveCompanyDocument(docId: string) {
-//   const headers = await getAuthHeaders();
-//   try {
-//     const res = await apiRequest(`/companies/document/${docId}`, {
-//       method: "DELETE",
-//       headers,
-//     });
-
-//     return { success: true, data: res };
-//   } catch (error: any) {
-//     return {
-//       success: false,
-//       message: error.message || "Erro ao remover documento",
-//     };
-//   }
-// }
