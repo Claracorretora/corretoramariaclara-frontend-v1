@@ -1,4 +1,5 @@
 import PropertyCard from "@/components/PropertyCard";
+import Link from "next/link";
 
 const properties = [
   {
@@ -85,11 +86,13 @@ const properties = [
 
 export default function PropertiesPage() {
   return (
-    <section id="imoveis" className="py-8 bg-muted/50">
+    <section id="imoveis" className="py-10">
       <div className="mx-auto max-w-7xl px-4 xl:px-0">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
           {properties.map((property, index) => (
-            <PropertyCard key={index} {...property} />
+            <Link href={`/imovel/aa`} key={index}>
+              <PropertyCard {...property} />
+            </Link>
           ))}
         </div>
       </div>

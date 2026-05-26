@@ -53,12 +53,12 @@ const properties = [
   },
 ];
 
-export default function HomeProperties() {
+export default function HomeRentals() {
   return (
-    <section id="imoveis" className="py-10 bg-muted/50">
+    <section id="imoveis" className="py-10">
       <div className="mx-auto max-w-7xl px-4 xl:px-0">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-extralight">Imóveis em destaque</h2>
+          <h2 className="text-2xl font-extralight">Aluguéis em destaque</h2>
           <Link
             href="/imoveis"
             className="flex items-center gap-1 text-sm font-extralight border-clara-secondary border px-4 py-2 rounded text-clara-secondary hover:border-clara-tertiary hover:text-clara-tertiary transition-colors"
@@ -75,7 +75,7 @@ export default function HomeProperties() {
           }}
           plugins={[
             Autoplay({
-              delay: 5000,
+              delay: 4000,
               stopOnInteraction: false,
               stopOnMouseEnter: false,
             }),

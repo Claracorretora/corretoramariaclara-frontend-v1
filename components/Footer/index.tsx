@@ -1,27 +1,26 @@
 import Link from "next/link";
 import Image from "next/image";
-import logo from "@/public/logo.jpeg";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 const navigation = [
-  { name: "Início", href: "/" },
-  { name: "Imóveis", href: "/imoveis" },
-  { name: "Sobre", href: "/sobre" },
-  { name: "Contato", href: "/contatos" },
+  { name: "Encontre seu Imóvel", href: "/" },
+  { name: "Sobre Financiamento", href: "/entenda-sobre-o-financiamento" },
 ];
 
 export default function Footer() {
   return (
-    <footer id="contato" className="bg-gray-800 text-white">
+    <footer id="contato" className="bg-clara-quaternary text-white">
       <div className="mx-auto max-w-7xl px-4 xl:px-0 py-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
           <div>
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-600">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg">
                 <Image
-                  src={logo}
+                  src="/footer.png"
                   alt="Logo Maria Clara Corretora"
-                  className="rounded-lg"
+                  className="rounded-lg bg-white p-0.5 object-contain object-center w-full h-full"
+                  width={50}
+                  height={50}
                 />
               </div>
               <div className="flex flex-col">
@@ -29,6 +28,7 @@ export default function Footer() {
                   MARIA CLARA
                 </span>
                 <span className="text-xs leading-tight">CORRETORA</span>
+                <span className="text-xs leading-tight">CRECI: 21203</span>
               </div>
             </Link>
 
