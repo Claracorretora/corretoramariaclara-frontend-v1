@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
-import { TanstackQueryProvider } from "@/hooks/useTanstackQueryProvider";
+import { TanstackQueryProvider } from "@/providers/useTanstackQueryProvider";
 
 export const metadata: Metadata = {
   title: "Corretora em Arcoverde | Maria Clara | Imóveis e Consultoria",

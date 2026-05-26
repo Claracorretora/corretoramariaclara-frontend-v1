@@ -132,7 +132,7 @@ export default function AdminLogin() {
             {/* BOTÃO */}
             <Button
               type="submit"
-              className="w-full bg-red-500 hover:bg-red-600"
+              className="w-full bg-red-500 hover:bg-red-600 cursor-pointer"
               disabled={loginMutation.isPending}
             >
               {loginMutation.isPending ? "Entrando..." : "Entrar"}

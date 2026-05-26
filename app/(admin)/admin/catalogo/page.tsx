@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import {
   Card,
@@ -17,50 +17,34 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Eye, Search } from "lucide-react";
+import { Eye, Pencil, Search, Trash2 } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
-import { IProperty } from "@/models/Property";
-// import DialogCreateCompany from "@/components/Company/DialogCreateCompany";
-// import { FindAllCompanies } from "@/services/Company";
-// import DialogDeleteCompany from "@/components/Company/DialogDeleteCompany";
-// import DialogEditCompany from "@/components/Company/DialogEditCompany";
-// import { DialogDetailCompany } from "@/components/Company/DialogDetailCompany";
+import DialogStoreProperty from "@/components/Admin/Catalog/DialogStoreProperty";
+import { useFindAllProperties } from "@/hooks/usePropertyQuery";
 
 export default function Companies() {
-  const [company, setCompany] = useState<IProperty[]>([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [detailCompanyId, setDetailCompanyId] = useState<string | null>(null);
+  const [editCompanyId, setEditCompanyId] = useState<string | null>(null);
+  const [deleteCompany, setDeleteCompany] = useState<{
+    id: string;
+    name: string;
+  } | null>(null);
 
   const [page, setPage] = useState(1);
-  const [limit] = useState(10);
-  const [total, setTotal] = useState(0);
 
-  //   const fetchCompanies = async () => {
-  //     try {
-  //       const res = await FindAllCompanies(
-  //         page,
-  //         limit,
-  //         "updatedAt,desc",
-  //         searchTerm,
-  //       );
-  //       setCompany(res.data);
-  //       setTotal(res.total);
-  //     } catch (error) {
-  //       toast.error("Erro ao buscar empresas");
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
+  const limit = 10;
 
-  //   useEffect(() => {
-  //     fetchCompanies();
-  //   }, [page, searchTerm]);
+  const { data, isLoading, isFetching } = useFindAllProperties({
+    page,
+    limit,
+  });
 
-  const filteredCompanies = company.filter((company) =>
-    company.legalName?.toLowerCase().includes(searchTerm.toLowerCase()),
-  );
+  const properties = data?.data;
+
+  const total = data?.total ?? 0;
+
+  const totalPages = Math.ceil(total / limit);
 
   return (
     <div className="space-y-6">
@@ -70,26 +54,14 @@ export default function Companies() {
           <p className="text-gray-600">Gerencie seus imóveis</p>
         </div>
 
-        {/* <DialogCreateCompany onCreated={fetchCompanies} /> */}
+        <DialogStoreProperty />
       </div>
 
       <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
-        <div className="relative flex-1 max-w-sm">
-          <Search className="absolute left-3 top-2 h-4 w-4" />
-          <Input
-            placeholder="Buscar imóveis..."
-            value={searchTerm}
-            onChange={(e) => {
-              setPage(1);
-              setSearchTerm(e.target.value);
-            }}
-            className="pl-10 border-gray-300 bg-white"
-          />
-        </div>
         <div className="text-sm text-gray-600">
-          {loading
-            ? "Carregando..."
-            : `${filteredCompanies.length} de ${total} imóveis encontrados`}
+          {isFetching
+            ? "Atualizando..."
+            : `${properties.length} de ${total} imóveis encontrados`}
         </div>
       </div>
 
@@ -106,56 +78,88 @@ export default function Companies() {
               <TableHeader>
                 <TableRow>
                   <TableHead>Nome</TableHead>
-                  <TableHead>CNPJ</TableHead>
-                  <TableHead>E-mail</TableHead>
+                  <TableHead>Valor</TableHead>
+                  <TableHead>Localização</TableHead>
                   <TableHead className="text-right">Ações</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {loading
-                  ? [...Array(5)].map((_, i) => (
-                      <TableRow key={i}>
-                        <TableCell>
-                          <Skeleton className="h-4 w-20" />
-                        </TableCell>
-                        <TableCell>
-                          <Skeleton className="h-4 w-20" />
-                        </TableCell>
-                        <TableCell>
-                          <Skeleton className="h-4 w-20" />
-                        </TableCell>
-                        <TableCell className="text-right">
-                          <div className="flex justify-end gap-2">
-                            <Skeleton className="h-8 w-8 rounded-md" />
-                            <Skeleton className="h-8 w-8 rounded-md" />
-                            <Skeleton className="h-8 w-8 rounded-md" />
-                          </div>
-                        </TableCell>
-                      </TableRow>
-                    ))
-                  : filteredCompanies.map((company) => (
-                      <TableRow key={company.id}>
-                        <TableCell>{company.legalName}</TableCell>
-                        <TableCell>{company.cnpj}</TableCell>
-                        <TableCell>{company.email}</TableCell>
-                        <TableCell className="text-right">
-                          <div className="flex justify-end gap-2">
-                            {/* <DialogDetailCompany id={company.id} />
+                {isLoading ? (
+                  [...Array(limit)].map((_, i) => (
+                    <TableRow key={i}>
+                      <TableCell>
+                        <Skeleton className="h-4 w-20" />
+                      </TableCell>
+                      <TableCell>
+                        <Skeleton className="h-4 w-20" />
+                      </TableCell>
+                      <TableCell>
+                        <Skeleton className="h-4 w-20" />
+                      </TableCell>
+                      <TableCell className="text-right">
+                        <div className="flex justify-end gap-2">
+                          <Skeleton className="h-8 w-8 rounded-md" />
+                          <Skeleton className="h-8 w-8 rounded-md" />
+                          <Skeleton className="h-8 w-8 rounded-md" />
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ))
+                ) : properties.length > 0 ? (
+                  properties.map((property: any) => (
+                    <TableRow key={property.id}>
+                      <TableCell className="font-medium">
+                        {property.name}
+                      </TableCell>
 
-                            <DialogEditCompany
-                              id={company.id}
-                              onUpdated={fetchCompanies}
-                            />
+                      <TableCell>{property.value}</TableCell>
 
-                            <DialogDeleteCompany
-                              id={company.id}
-                              name={company.legalName}
-                              setCompanies={setCompany}
-                            /> */}
-                          </div>
-                        </TableCell>
-                      </TableRow>
-                    ))}
+                      <TableCell>{property.location}</TableCell>
+
+                      <TableCell className="text-right">
+                        <div className="flex justify-end gap-2">
+                          <Button
+                            variant="outline"
+                            className="cursor-pointer"
+                            onClick={() => setDetailCompanyId(property.id)}
+                          >
+                            <Eye className="h-4 w-4" />
+                          </Button>
+
+                          <Button
+                            variant="outline"
+                            className="cursor-pointer"
+                            onClick={() => setEditCompanyId(property.id)}
+                          >
+                            <Pencil className="h-4 w-4" />
+                          </Button>
+
+                          <Button
+                            variant="destructive"
+                            className="cursor-pointer"
+                            onClick={() =>
+                              setDeleteCompany({
+                                id: property.id,
+                                name: property.name,
+                              })
+                            }
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ))
+                ) : (
+                  <TableRow>
+                    <TableCell
+                      colSpan={4}
+                      className="text-center py-10 text-muted-foreground"
+                    >
+                      Nenhuma empresa encontrada.
+                    </TableCell>
+                  </TableRow>
+                )}
               </TableBody>
             </Table>
           </div>
@@ -164,22 +168,20 @@ export default function Companies() {
             <Button
               variant="outline"
               onClick={() => setPage((p) => Math.max(1, p - 1))}
-              disabled={page === 1 || loading}
+              disabled={page === 1 || isFetching}
               className="cursor-pointer"
             >
               Anterior
             </Button>
 
             <span className="px-2 text-sm flex items-center">
-              Página {page} de {Math.ceil(total / limit)}
+              Página {page} de {totalPages || 1}
             </span>
 
             <Button
               variant="outline"
-              onClick={() =>
-                setPage((p) => (p < Math.ceil(total / limit) ? p + 1 : p))
-              }
-              disabled={page >= Math.ceil(total / limit) || loading}
+              onClick={() => setPage((p) => (p < totalPages ? p + 1 : p))}
+              disabled={page === totalPages || isFetching}
               className="cursor-pointer"
             >
               Próxima
@@ -187,6 +189,43 @@ export default function Companies() {
           </div>
         </CardContent>
       </Card>
+
+      {/* {detailCompanyId && (
+        <DialogDetailCompany
+          id={detailCompanyId}
+          open={!!detailCompanyId}
+          onOpenChange={(open) => {
+            if (!open) {
+              setDetailCompanyId(null);
+            }
+          }}
+        />
+      )}
+
+      {editCompanyId && (
+        <DialogEditCompany
+          id={editCompanyId}
+          open={!!editCompanyId}
+          onOpenChange={(open) => {
+            if (!open) {
+              setEditCompanyId(null);
+            }
+          }}
+        />
+      )}
+
+      {deleteCompany && (
+        <DialogDeleteCompany
+          id={deleteCompany.id}
+          name={deleteCompany.name}
+          open={!!deleteCompany}
+          onOpenChange={(open) => {
+            if (!open) {
+              setDeleteCompany(null);
+            }
+          }}
+        />
+      )} */}
     </div>
   );
 }
