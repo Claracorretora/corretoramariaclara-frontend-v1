@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Bed, Bath, Car, Maximize } from "lucide-react";
 import { IProperty } from "@/interfaces/property";
+import { formatCurrency } from "@/utils/format-currency";
 
 export default function PropertyCard({
   name,
@@ -29,12 +30,7 @@ export default function PropertyCard({
       <div className="p-4">
         <span className="text-sm text-muted-foreground">{name}</span>
 
-        <p className="text-xl font-bold mt-1">
-          {new Intl.NumberFormat("pt-BR", {
-            style: "currency",
-            currency: "BRL",
-          }).format(Number(value))}
-        </p>
+        <p className="text-xl font-bold mt-1">{formatCurrency(value)}</p>
 
         <div className="flex flex-wrap gap-4 mt-4 text-muted-foreground">
           <div className="flex items-center gap-1">
