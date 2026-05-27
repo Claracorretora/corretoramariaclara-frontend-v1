@@ -79,7 +79,6 @@ export default function HomeHero() {
                       </SelectTrigger>
 
                       <SelectContent className="rounded-xl border-slate-100 shadow-2xl p-2">
-                        <SelectItem value="none">Selecione...</SelectItem>
                         <SelectItem value="Venda">Venda</SelectItem>
                         <SelectItem value="Aluguel">
                           Aluguel / Locação
@@ -101,8 +100,6 @@ export default function HomeHero() {
                       </SelectTrigger>
 
                       <SelectContent className="rounded-xl border-slate-100 shadow-2xl p-2">
-                        <SelectItem value="none">Selecione...</SelectItem>
-
                         <SelectGroup>
                           <SelectLabel className="font-bold text-muted-foreground">
                             Residencial
@@ -151,8 +148,6 @@ export default function HomeHero() {
                       </SelectTrigger>
 
                       <SelectContent className="rounded-xl border-slate-100 shadow-2xl p-2">
-                        <SelectItem value="none">Selecione...</SelectItem>
-
                         {locations?.map((location: string) => (
                           <SelectItem key={location} value={location}>
                             {location}

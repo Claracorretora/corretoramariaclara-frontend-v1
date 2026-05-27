@@ -14,12 +14,7 @@ export function PropertiesContent() {
   const purpose = searchParams.get("purpose") || "";
   const type = searchParams.get("type") || "";
 
-  const page = 1;
-  const limit = 4;
-
   const { data, isLoading } = useFindAllProperties({
-    page,
-    limit,
     type,
     purpose,
   });
@@ -99,7 +94,7 @@ import { Suspense } from "react";
 
 export default function PropertiesPage() {
   return (
-    <Suspense fallback={<></>}>
+    <Suspense fallback={<main className="min-h-screen"></main>}>
       <PropertiesContent />
     </Suspense>
   );

@@ -40,9 +40,10 @@ export default function Properties() {
   });
 
   const properties: IProperty[] = data?.data;
-  const total = data?.total ?? 0;
-
-  const totalPages = Math.ceil(total / limit);
+  const total = data?.meta?.total ?? 0;
+  const totalPages = data?.meta?.totalPages ?? 1;
+  const hasNextPage = data?.meta?.hasNextPage ?? false;
+  const hasPreviousPage = data?.meta?.hasPreviousPage ?? false;
 
   return (
     <main className="space-y-6 font-urban">
@@ -176,7 +177,7 @@ export default function Properties() {
             <Button
               variant="outline"
               onClick={() => setPage((p) => Math.max(1, p - 1))}
-              disabled={page === 1 || isFetching}
+              disabled={!hasPreviousPage || isFetching}
               className="cursor-pointer"
             >
               Anterior
@@ -188,8 +189,8 @@ export default function Properties() {
 
             <Button
               variant="outline"
-              onClick={() => setPage((p) => (p < totalPages ? p + 1 : p))}
-              disabled={page === totalPages || isFetching}
+              onClick={() => setPage((p) => p + 1)}
+              disabled={!hasNextPage || isFetching}
               className="cursor-pointer"
             >
               Próxima

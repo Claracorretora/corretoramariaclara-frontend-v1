@@ -49,8 +49,6 @@ export function SearchContent() {
   });
 
   const { data, isLoading } = useFindAllProperties({
-    page: 1,
-    limit: 10,
     purpose: filters.purpose || undefined,
     type: filters.type || undefined,
     location: filters.location || undefined,
@@ -89,11 +87,10 @@ export function SearchContent() {
 
                 <Select value={purpose} onValueChange={setPurpose}>
                   <SelectTrigger className="w-full border-none shadow-none focus:ring-0 bg-slate-50 hover:bg-slate-100 rounded-xl h-12 px-4 cursor-pointer">
-                    <SelectValue placeholder="Selecione" />
+                    <SelectValue placeholder="Selecione o tipo" />
                   </SelectTrigger>
 
                   <SelectContent>
-                    <SelectItem value="none">Selecione...</SelectItem>
                     <SelectItem value="Venda">Venda</SelectItem>
                     <SelectItem value="Aluguel">Aluguel / Locação</SelectItem>
                     <SelectItem value="Temporada">Temporada</SelectItem>
@@ -113,8 +110,6 @@ export function SearchContent() {
                   </SelectTrigger>
 
                   <SelectContent>
-                    <SelectItem value="none">Selecione...</SelectItem>
-
                     <SelectGroup>
                       <SelectLabel className="font-bold text-muted-foreground">
                         Residencial
@@ -234,7 +229,7 @@ import { Suspense } from "react";
 
 export default function BuscarPage() {
   return (
-    <Suspense fallback={<></>}>
+    <Suspense fallback={<main className="min-h-screen"></main>}>
       <SearchContent />
     </Suspense>
   );
