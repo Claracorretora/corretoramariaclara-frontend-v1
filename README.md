@@ -17,6 +17,11 @@ Interface web moderna e responsiva para gerenciamento e venda de propriedades, i
 - **Lucide React** Ícones modernos e leves.
 
 - **React Icons** Conjunto adicional de ícones para maior flexibilidade na UI.
+- **TanStack Query (React Query)** – Gerenciamento de estado assíncrono, cache, sincronização e atualização de dados da API.
+
+- **React Hook Form** – Gerenciamento eficiente de formulários com alta performance e menor re-renderização.
+
+- **Zod** – Validação de schemas e tipagem segura para formulários e dados vindos da API.
 
 ---
 
@@ -50,6 +55,8 @@ Crie um arquivo .env na raiz do projeto e adicione:
 - **📄 Detalhes do imóvel** – Página dedicada com informações completas.
 - **📱 Design responsivo** – Interface adaptada para mobile, tablet e desktop.
 - **📤 Integração com API REST** – Consumo dinâmico de dados do backend.
+- **🧾 Formulários validados** – Uso de React Hook Form + Zod para validação robusta e tipada.
+- **⚡ Cache inteligente de dados** – Utilizando TanStack Query para otimizar requisições e performance.
 - **💬 Compartilhamento via WhatsApp** – Geração de mensagens automáticas para contato.
 
 ---
