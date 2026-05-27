@@ -29,7 +29,7 @@ export function PropertiesContent() {
   return (
     <section id="imoveis" className="py-10 min-h-screen">
       <div className="mx-auto max-w-7xl px-4 xl:px-0">
-        <h1 className="text-3xl font-light mb-8">
+        <h1 className="text-3xl font-urban mb-8">
           {purpose === "Venda"
             ? "Todos à venda"
             : purpose === "Aluguel"

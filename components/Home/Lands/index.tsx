@@ -30,11 +30,11 @@ export default function HomeLands() {
     <section className="py-10">
       <div className="mx-auto max-w-7xl px-4 xl:px-0">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-extralight">Terrenos em destaque</h2>
+          <h2 className="text-2xl font-urban">Terrenos em destaque</h2>
 
           <Link
             href="/imoveis?type=Terreno"
-            className="flex items-center gap-1 text-sm font-extralight border-clara-secondary border px-4 py-2 rounded text-clara-secondary hover:border-clara-tertiary hover:text-clara-tertiary transition-colors"
+            className="flex items-center gap-1 text-sm font-cinzel border-clara-secondary border px-4 py-2 rounded text-clara-secondary hover:border-clara-tertiary hover:text-clara-tertiary transition-colors"
           >
             Ver todos
             <ArrowRight className="h-4 w-4" />

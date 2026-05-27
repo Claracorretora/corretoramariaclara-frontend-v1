@@ -55,11 +55,11 @@ export default function HomeHero() {
 
           <div className="relative z-10 px-6 max-w-5xl w-full flex flex-col items-center pt-20 pb-12">
             <div className="text-center space-y-4 mb-10">
-              <h1 className="text-4xl md:text-6xl text-shadow-sm font-extralight font-serif text-white leading-tight">
+              <h1 className="text-4xl md:text-6xl text-shadow-sm font-urban text-white leading-tight">
                 Encontre o seu imóvel perfeito.
               </h1>
 
-              <p className="text-lg md:text-xl text-white/90 font-serif leading-relaxed italic">
+              <p className="text-lg md:text-xl text-white/90 font-cinzel leading-relaxed italic">
                 Buscou, encontrou, se mudou. Sem burocracias.
               </p>
             </div>
@@ -69,7 +69,7 @@ export default function HomeHero() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
                   {/* Finalidade */}
                   <div className="flex flex-col space-y-1.5 text-left">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400 ml-3">
+                    <label className="font-urban text-slate-400 ml-3">
                       Finalidade
                     </label>
 
@@ -91,7 +91,7 @@ export default function HomeHero() {
 
                   {/* Tipo */}
                   <div className="flex flex-col space-y-1.5 text-left md:border-l md:border-slate-100 md:pl-4">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400 ml-3">
+                    <label className="font-urban text-slate-400 ml-3">
                       Tipo de Imóvel
                     </label>
 
@@ -141,7 +141,7 @@ export default function HomeHero() {
 
                   {/* Localização */}
                   <div className="flex flex-col space-y-1.5 text-left md:border-l md:border-slate-100 md:pl-4">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400 ml-3">
+                    <label className="font-urban text-slate-400 ml-3">
                       Localização
                     </label>
 
@@ -165,10 +165,10 @@ export default function HomeHero() {
 
                 <Button
                   onClick={handleSearch}
-                  className="w-full md:w-auto bg-clara-secondary hover:bg-clara-tertiary text-white px-10 h-12 rounded-xl transition-all font-bold cursor-pointer"
+                  className="w-full md:w-auto bg-clara-secondary hover:bg-clara-tertiary text-white px-10 h-12 rounded-xl transition-colors font-cinzel cursor-pointer"
                 >
                   <Search className="mr-2 h-4 w-4" />
-                  BUSCAR
+                  Buscar
                 </Button>
               </div>
             </div>

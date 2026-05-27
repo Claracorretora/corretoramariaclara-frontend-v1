@@ -83,7 +83,7 @@ export function SearchContent() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
               {/* Finalidade */}
               <div className="flex flex-col space-y-1.5 text-left">
-                <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400 ml-3">
+                <label className="font-urban text-slate-400 ml-3">
                   Finalidade
                 </label>
 
@@ -103,7 +103,7 @@ export function SearchContent() {
 
               {/* Tipo */}
               <div className="flex flex-col space-y-1.5 text-left">
-                <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400 ml-3">
+                <label className="font-urban text-slate-400 ml-3">
                   Tipo de Imóvel
                 </label>
 
@@ -145,7 +145,7 @@ export function SearchContent() {
 
               {/* Localização */}
               <div className="flex flex-col space-y-1.5 text-left">
-                <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400 ml-3">
+                <label className="font-urban text-slate-400 ml-3">
                   Localização
                 </label>
 
@@ -167,7 +167,7 @@ export function SearchContent() {
 
             <Button
               onClick={handleSearch}
-              className="w-full md:w-auto bg-clara-secondary hover:bg-clara-tertiary text-white px-10 h-12 rounded-xl font-bold cursor-pointer"
+              className="w-full md:w-auto bg-clara-secondary hover:bg-clara-tertiary text-white px-10 h-12 rounded-xl font-cinzel cursor-pointer"
             >
               <Search className="mr-2 h-4 w-4" />
               BUSCAR
@@ -214,11 +214,11 @@ export function SearchContent() {
             ))
           ) : (
             <div className="col-span-full flex flex-col items-center justify-center py-20 text-center">
-              <h3 className="text-2xl font-semibold text-slate-700">
+              <h3 className="text-2xl font-urban text-slate-700">
                 Nenhum imóvel encontrado
               </h3>
 
-              <p className="text-slate-500 mt-2 max-w-md">
+              <p className="text-slate-500 mt-2 max-w-md font-urban">
                 Não encontramos imóveis com os filtros selecionados. Tente
                 ajustar sua busca.
               </p>

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Bed, Bath, Car, Maximize } from "lucide-react";
+import { Bed, Bath, Car, Maximize, MapPin } from "lucide-react";
 import { IProperty } from "@/interfaces/property";
 import { formatCurrency } from "@/utils/format-currency";
 
@@ -10,6 +10,8 @@ export default function PropertyCard({
   value,
   bedrooms,
   bathrooms,
+  purpose,
+  type,
   garage,
   squareMeters,
   location,
@@ -28,9 +30,13 @@ export default function PropertyCard({
       </div>
 
       <div className="p-4">
-        <span className="text-sm text-muted-foreground">{name}</span>
+        <span className="text-sm text-muted-foreground font-urban">
+          {name} - {purpose}
+        </span>
 
-        <p className="text-xl font-bold mt-1">{formatCurrency(value)}</p>
+        <p className="text-xl font-bold font-urban mt-1">
+          {formatCurrency(value)}
+        </p>
 
         <div className="flex flex-wrap gap-4 mt-4 text-muted-foreground">
           <div className="flex items-center gap-1">
@@ -54,8 +60,9 @@ export default function PropertyCard({
           </div>
         </div>
 
-        <p className="text-sm text-muted-foreground mt-3 line-clamp-1">
-          {location}
+        <p className="text-sm text-muted-foreground mt-3 line-clamp-1 font-urban flex">
+          <MapPin className="h-4 w-4" />
+          {location} - {type}
         </p>
       </div>
     </div>

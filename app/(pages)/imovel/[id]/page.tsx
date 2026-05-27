@@ -194,20 +194,23 @@ Configuração: ${property.squareMeters}m², ${property.bedrooms} ${bedroomsLabe
         <div className="lg:col-span-2 space-y-8">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b text-slate-600 pb-4">
             <div className="space-y-1">
-              <h1 className="text-2xl md:text-3xl font-bold text-slate-800 tracking-tight">
+              <h1 className="text-2xl md:text-3xl font-bold font-cinzel text-slate-800 tracking-tight">
                 {property.name}
               </h1>
-              <p className="text-slate-500 flex items-center gap-1.5 text-sm md:text-base">
+              <p className="text-slate-500 flex items-center font-urban gap-1.5 text-sm md:text-base">
                 <MapPin size={18} className="text-slate-400" />
                 {property.location}
+              </p>
+              <p className="text-slate-500 flex items-center font-urban gap-1.5 text-sm md:text-base">
+                {property.type} - {property.purpose}
               </p>
             </div>
 
             <div className="text-left md:text-right bg-slate-50 md:bg-transparent p-3 md:p-0 rounded-lg w-full md:w-auto">
-              <p className="text-xs uppercase font-semibold text-slate-500 md:mb-1">
+              <p className="text-xs uppercase font-urban font-semibold text-slate-500 md:mb-1">
                 Valor
               </p>
-              <p className="font-extrabold text-2xl md:text-3xl text-slate-900 tracking-tighter">
+              <p className="font-extrabold text-2xl md:text-3xl text-slate-900 tracking-tighter font-urban">
                 {formatCurrency(property.value)}
               </p>
             </div>
@@ -216,38 +219,38 @@ Configuração: ${property.squareMeters}m², ${property.bedrooms} ${bedroomsLabe
           <div className="flex justify-around pb-4 border-b text-slate-600">
             <div className="flex flex-col items-center gap-1">
               <Home size={24} />
-              <span className="text-[10px] uppercase">Área</span>
-              <p className="font-bold">{property.squareMeters}m²</p>
+              <span className="text-[10px] uppercase font-urban">Área</span>
+              <p className="font-bold font-urban">{property.squareMeters}m²</p>
             </div>
 
             <div className="flex flex-col items-center gap-1">
               <Bed size={24} />
-              <span className="text-[10px] uppercase">
+              <span className="text-[10px] uppercase font-urban">
                 {property.bedrooms > 1 ? "Quartos" : "Quarto"}
               </span>
-              <p className="font-bold">{property.bedrooms}</p>
+              <p className="font-bold font-urban">{property.bedrooms}</p>
             </div>
 
             <div className="flex flex-col items-center gap-1">
               <Bath size={24} />
-              <span className="text-[10px] uppercase">
+              <span className="text-[10px] uppercase font-urban">
                 {property.bathrooms > 1 ? "Banheiros" : "Banheiro"}
               </span>
-              <p className="font-bold">{property.bathrooms}</p>
+              <p className="font-bold font-urban">{property.bathrooms}</p>
             </div>
 
             <div className="flex flex-col items-center gap-1">
               <Car size={24} />
-              <span className="text-[10px] uppercase">
+              <span className="text-[10px] uppercase font-urban">
                 {property.garage > 1 ? "Vagas" : "Vaga"}
               </span>
-              <p className="font-bold">{property.garage}</p>
+              <p className="font-bold font-urban">{property.garage}</p>
             </div>
           </div>
 
           <section>
-            <h2 className="text-xl font-bold mb-4">Descrição</h2>
-            <p className="text-slate-600 leading-relaxed">
+            <h2 className="text-xl font-bold font-urban mb-4">Descrição</h2>
+            <p className="text-slate-600 leading-relaxed font-urban wrap-break-word">
               {property.description}
             </p>
           </section>
@@ -260,17 +263,17 @@ Configuração: ${property.squareMeters}m², ${property.bedrooms} ${bedroomsLabe
               <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <FaWhatsapp className="text-green-600 w-8 h-8" />
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-2">
+              <h3 className="text-xl font-bold text-slate-800 mb-2 font-urban">
                 Ficou interessado?
               </h3>
-              <p className="text-sm text-slate-500 mb-6">
+              <p className="text-sm text-slate-500 mb-6 font-urban">
                 Clique no botão abaixo para conversar agora e tirar suas dúvidas
                 sobre este imóvel.
               </p>
 
               <Button
                 onClick={handleWhatsAppClick}
-                className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white py-7 text-lg gap-3 transition-colors cursor-pointer font-extralight"
+                className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white py-7 text-lg gap-3 transition-colors cursor-pointer font-semibold font-urban"
               >
                 Saiba Mais via WhatsApp
               </Button>
@@ -287,7 +290,7 @@ Configuração: ${property.squareMeters}m², ${property.bedrooms} ${bedroomsLabe
                 />
               </div>
               <div className="flex-1 text-left">
-                <p className="font-extralight text-sm">Maria Clara</p>
+                <p className="text-sm font-urban">Maria Clara</p>
                 <p className="text-xs text-slate-500">CRECI: 21203</p>
               </div>
             </CardContent>
