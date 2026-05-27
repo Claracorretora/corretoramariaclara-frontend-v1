@@ -3,15 +3,19 @@ import { z } from "zod";
 export const storePropertySchema = z.object({
   name: z.string().min(1, "Nome da propriedade obrigatório"),
 
-  value: z.string().min(1, "Valor da propriedade obrigatório"),
+  value: z.coerce.number().min(1, "Valor da propriedade obrigatório"),
 
-  bedrooms: z.string().min(0, "Quantidade de quartos obrigatória"),
+  bedrooms: z.coerce.number().min(0, "Quantidade de quartos obrigatória"),
 
-  bathrooms: z.string().min(0, "Quantidade de banheiros obrigatória"),
+  bathrooms: z.coerce.number().min(0, "Quantidade de banheiros obrigatória"),
 
-  garage: z.string().min(0, "Quantidade de vagas de garagem obrigatória"),
+  garage: z.coerce
+    .number()
+    .min(0, "Quantidade de vagas de garagem obrigatória"),
 
-  squareMeters: z.string().min(1, "Área em metros quadrados obrigatória"),
+  squareMeters: z.coerce
+    .number()
+    .min(1, "Área em metros quadrados obrigatória"),
 
   location: z.string().min(1, "Localização obrigatória"),
 
@@ -39,15 +43,19 @@ export const storePropertySchema = z.object({
 export const updatePropertySchema = z.object({
   name: z.string().min(1, "Nome da propriedade obrigatório"),
 
-  value: z.string().min(1, "Valor da propriedade obrigatório"),
+  value: z.coerce.number().min(1, "Valor da propriedade obrigatório"),
 
-  bedrooms: z.string().min(0, "Quantidade de quartos obrigatória"),
+  bedrooms: z.coerce.number().min(0, "Quantidade de quartos obrigatória"),
 
-  bathrooms: z.string().min(0, "Quantidade de banheiros obrigatória"),
+  bathrooms: z.coerce.number().min(0, "Quantidade de banheiros obrigatória"),
 
-  garage: z.string().min(0, "Quantidade de vagas de garagem obrigatória"),
+  garage: z.coerce
+    .number()
+    .min(0, "Quantidade de vagas de garagem obrigatória"),
 
-  squareMeters: z.string().min(1, "Área em metros quadrados obrigatória"),
+  squareMeters: z.coerce
+    .number()
+    .min(1, "Área em metros quadrados obrigatória"),
 
   location: z.string().min(1, "Localização obrigatória"),
 

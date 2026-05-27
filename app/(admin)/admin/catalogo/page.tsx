@@ -24,6 +24,7 @@ import { useFindAllProperties } from "@/hooks/usePropertyQuery";
 import DialogUpdateProperty from "@/components/Admin/Catalog/DialogUpdateProperty";
 import DialogDeleteProperty from "@/components/Admin/Catalog/DialogDeleteProperty";
 import { IProperty } from "@/interfaces/property";
+import { formatCurrency } from "@/utils/format-currency";
 
 export default function Properties() {
   const [updatePropertyId, setUpdatePropertyId] = useState<string | null>(null);
@@ -122,7 +123,7 @@ export default function Properties() {
                         {property.name}
                       </TableCell>
 
-                      <TableCell>R$ {property.value}</TableCell>
+                      <TableCell>{formatCurrency(property.value)}</TableCell>
 
                       <TableCell>{property.location}</TableCell>
 

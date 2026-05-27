@@ -15,7 +15,7 @@ import { toast } from "sonner";
 import { Switch } from "@/components/ui/switch";
 import z from "zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { updatePropertySchema } from "@/schemas/property.schema";
 import { UpdateProperty } from "@/services/catalog.service";
@@ -31,6 +31,7 @@ import {
 } from "@/components/ui/select";
 import { useFindOneProperty } from "@/hooks/usePropertyQuery";
 import { capitalizeWords } from "@/utils/capitalize-words";
+import { formatCurrency } from "@/utils/format-currency";
 
 interface DialogEditCompanyProps {
   id: string;
@@ -54,6 +55,7 @@ export default function DialogUpdateProperty({
     handleSubmit,
     setValue,
     watch,
+    control,
     reset,
     formState: { errors },
   } = useForm<UpdatePropertyFormInput, any, UpdatePropertyFormData>({
@@ -120,11 +122,11 @@ export default function DialogUpdateProperty({
       const formData = new FormData();
 
       formData.append("name", capitalizeWords(data.name));
-      formData.append("value", data.value || "0");
-      formData.append("bedrooms", data.bedrooms || "0");
-      formData.append("bathrooms", data.bathrooms || "0");
-      formData.append("garage", data.garage || "0");
-      formData.append("squareMeters", data.squareMeters);
+      formData.append("value", String(data.value ?? 0));
+      formData.append("bedrooms", String(data.bedrooms ?? 0));
+      formData.append("bathrooms", String(data.bathrooms ?? 0));
+      formData.append("garage", String(data.garage ?? 0));
+      formData.append("squareMeters", String(data.squareMeters ?? 0));
       formData.append("location", capitalizeWords(data.location));
       formData.append("type", data.type);
       formData.append("purpose", data.purpose);
@@ -189,7 +191,21 @@ export default function DialogUpdateProperty({
 
             <div className="space-y-2">
               <Label>Valor *</Label>
-              <Input type="number" {...register("value")} />
+              <Controller
+                control={control}
+                name="value"
+                render={({ field }) => (
+                  <Input
+                    type="text"
+                    value={formatCurrency((field.value as number) || 0)}
+                    onChange={(e) => {
+                      const rawValue = e.target.value.replace(/\D/g, "");
+
+                      field.onChange(Number(rawValue) / 100);
+                    }}
+                  />
+                )}
+              />
 
               {errors.value && (
                 <p className="text-sm text-red-500">{errors.value.message}</p>
@@ -198,7 +214,12 @@ export default function DialogUpdateProperty({
 
             <div className="space-y-2">
               <Label>Quartos *</Label>
-              <Input type="number" {...register("bedrooms")} />
+              <Input
+                type="number"
+                {...register("bedrooms", {
+                  setValueAs: (value) => (value === "" ? 0 : Number(value)),
+                })}
+              />
 
               {errors.bedrooms && (
                 <p className="text-sm text-red-500">
@@ -209,7 +230,12 @@ export default function DialogUpdateProperty({
 
             <div className="space-y-2">
               <Label>Banheiros *</Label>
-              <Input type="number" {...register("bathrooms")} />
+              <Input
+                type="number"
+                {...register("bathrooms", {
+                  setValueAs: (value) => (value === "" ? 0 : Number(value)),
+                })}
+              />
 
               {errors.bathrooms && (
                 <p className="text-sm text-red-500">
@@ -220,7 +246,12 @@ export default function DialogUpdateProperty({
 
             <div className="space-y-2">
               <Label>Garagem *</Label>
-              <Input type="number" {...register("garage")} />
+              <Input
+                type="number"
+                {...register("garage", {
+                  setValueAs: (value) => (value === "" ? 0 : Number(value)),
+                })}
+              />
 
               {errors.garage && (
                 <p className="text-sm text-red-500">{errors.garage.message}</p>

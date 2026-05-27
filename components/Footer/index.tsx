@@ -80,7 +80,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
-                  href="tel:+5587999380401"
+                  href="https://wa.me/5587999380401"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="transition-colors hover:text-white/70 hover:underline"
