@@ -26,7 +26,7 @@ export default function PropertyPage() {
     const garageLabel =
       property.garage > 1 ? "vagas na garagem" : "vaga na garagem";
 
-    const message = `Olá! Gostaria de mais informações sobre o imóvel:
+    const message = `Olá, vim do site e gostaria de mais informações sobre o imóvel:
 *${property.name}*
 Valor: ${formatCurrency(property.value)}
 Localização: ${property.location}

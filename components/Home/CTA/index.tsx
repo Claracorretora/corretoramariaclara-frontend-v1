@@ -4,6 +4,9 @@ import Link from "next/link";
 import { MessagesSquare } from "lucide-react";
 
 export default function HomeCTA() {
+  const message =
+    "Olá, vim do site e preciso de ajuda para encontrar um imóvel.";
+
   return (
     <section className="py-12 text-white bg-muted/50">
       <div className="mx-auto max-w-7xl px-4 xl:px-0">
@@ -29,7 +32,7 @@ export default function HomeCTA() {
           </div>
 
           <Link
-            href="https://wa.me/5587999380401?text=Olá! Preciso de ajuda para encontrar um imóvel."
+            href={`https://wa.me/5587999380401?text=${encodeURIComponent(message)}`}
             target="_blank"
             rel="noopener noreferrer"
           >

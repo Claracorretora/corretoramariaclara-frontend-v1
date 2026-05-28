@@ -56,6 +56,9 @@ const steps = [
 ];
 
 export default function PageFinancing() {
+  const message =
+    "Olá, vim do site e gostaria de saber como simular o financiamento.";
+
   return (
     <main className="min-h-screen bg-slate-50">
       {/* --- HERO SECTION --- */}
@@ -177,7 +180,7 @@ export default function PageFinancing() {
             </p>
             <div className="flex flex-col md:flex-row gap-4 justify-center">
               <Link
-                href="https://wa.me/5587999380401?text=Olá! Gostaria de saber como simular o financiamento"
+                href={`https://wa.me/5587999380401?text=${encodeURIComponent(message)}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >

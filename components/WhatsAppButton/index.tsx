@@ -2,9 +2,12 @@ import Link from "next/link";
 import { FaWhatsapp } from "react-icons/fa";
 
 export default function WhatsAppButton() {
+  const message =
+    "Olá, vim do site e gostaria de saber como simular o financiamento.";
+
   return (
     <Link
-      href="https://wa.me/5587999380401?text=Olá! Gostaria de saber como simular o financiamento"
+      href={`https://wa.me/5587999380401?text=${encodeURIComponent(message)}`}
       className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 flex items-center gap-3 group"
       target="_blank"
       rel="noopener noreferrer"

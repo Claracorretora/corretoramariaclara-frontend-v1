@@ -53,6 +53,9 @@ const navigation = [
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const message =
+    "Olá, vim do site e gostaria de saber como faço para indicar meu imóvel.";
+
   return (
     <header className="sticky top-0 z-50 w-full bg-card/95 backdrop-blur supports-backdrop-filter:bg-card/80 border-b border-border">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 xl:px-0 py-4 font-serif">
@@ -77,7 +80,7 @@ export default function Header() {
 
         <div className="hidden lg:flex">
           <Link
-            href="https://wa.me/5587999380401?text=Olá! Gostaria de saber como faço para indicar meu imóvel."
+            href={`https://wa.me/5587999380401?text=${encodeURIComponent(message)}`}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -127,7 +130,7 @@ export default function Header() {
             ))}
             <div className="pt-4">
               <Link
-                href="https://wa.me/5587999380401?text=Olá! Gostaria de saber como faço para indicar meu imóvel."
+                href={`https://wa.me/5587999380401?text=${encodeURIComponent(message)}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
