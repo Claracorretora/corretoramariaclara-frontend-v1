@@ -130,7 +130,7 @@ Configuração: ${property.squareMeters}m², ${property.bedrooms} ${bedroomsLabe
   const images =
     property.images && property.images.length > 0
       ? property.images
-      : ["/placeholder-main.jpg"];
+      : ["/banner.jpg"];
 
   return (
     <main className="max-w-7xl mx-auto px-4 xl:px-0 py-10">
