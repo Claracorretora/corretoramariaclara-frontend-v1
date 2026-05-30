@@ -1,6 +1,14 @@
 "use client";
 
-import { MapPin, Bed, Bath, Car, Home } from "lucide-react";
+import {
+  MapPin,
+  Bed,
+  Bath,
+  Car,
+  Home,
+  BadgeCheck,
+  CircleX,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { FaWhatsapp } from "react-icons/fa";
@@ -193,17 +201,33 @@ Configuração: ${property.squareMeters}m², ${property.bedrooms} ${bedroomsLabe
         {/* --- Coluna da Esquerda --- */}
         <div className="lg:col-span-2 space-y-8">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b text-slate-600 pb-4">
-            <div className="space-y-1">
+            <div className="space-y-2">
               <h1 className="text-2xl md:text-3xl font-bold font-cinzel text-slate-800 tracking-tight">
                 {property.name}
               </h1>
-              <p className="text-slate-500 flex items-center font-urban gap-1.5 text-sm md:text-base">
-                <MapPin size={18} className="text-slate-400" />
+
+              <p className="text-slate-500 flex items-center gap-1.5 text-sm md:text-base">
+                <MapPin size={18} className="text-slate-400 shrink-0" />
                 {property.location}
               </p>
-              <p className="text-slate-500 flex items-center font-urban gap-1.5 text-sm md:text-base">
-                {property.type} - {property.purpose}
+
+              <p className="text-slate-600 text-sm md:text-base font-medium">
+                {property.type} • {property.purpose}
               </p>
+
+              <div>
+                {property.canFinance ? (
+                  <span className="inline-flex items-center gap-2 rounded-full bg-green-50 px-3 py-1.5 text-sm font-medium text-green-700 border border-green-200">
+                    <BadgeCheck size={16} />
+                    Financiamento disponível
+                  </span>
+                ) : (
+                  <span className="inline-flex items-center gap-2 rounded-full bg-red-50 px-3 py-1.5 text-sm font-medium text-red-700 border border-red-200">
+                    <CircleX size={16} />
+                    Não aceita financiamento
+                  </span>
+                )}
+              </div>
             </div>
 
             <div className="text-left md:text-right bg-slate-50 md:bg-transparent p-3 md:p-0 rounded-lg w-full md:w-auto">

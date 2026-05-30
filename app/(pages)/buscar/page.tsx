@@ -171,7 +171,7 @@ export function SearchContent() {
         </div>
 
         {/* Imóveis */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {isLoading ? (
             Array.from({ length: 10 }).map((_, index) => (
               <div
