@@ -106,7 +106,6 @@ export default function DialogStoreProperty() {
         if (data.images.length === 1) {
           formData.append("image", data.images[0]);
         } else {
-          formData.append("image", data.images[0]);
           data.images.forEach((file) => {
             formData.append("images", file);
           });
