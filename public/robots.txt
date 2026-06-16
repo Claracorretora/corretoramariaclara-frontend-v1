@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /login
+Disallow: /api
+
+Sitemap: https://www.corretoramariaclara.com.br/sitemap.xml
+
+# Crawl delay (opcional - apenas se necessário)
+# Crawl-delay: 1

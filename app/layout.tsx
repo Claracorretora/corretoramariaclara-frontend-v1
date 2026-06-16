@@ -33,6 +33,15 @@ export const metadata: Metadata = {
     "Maria Clara Corretora",
     "corretora em Arcoverde",
   ],
+  authors: [
+    {
+      name: "Maria Clara Corretora",
+      url: "https://www.corretoramariaclara.com.br",
+    },
+  ],
+  creator: "Maria Clara Corretora",
+  publisher: "Maria Clara Corretora",
+  metadataBase: new URL("https://www.corretoramariaclara.com.br"),
   openGraph: {
     title: "Maria Clara - Corretora de Imóveis em Arcoverde PE",
     description:
@@ -50,9 +59,29 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Maria Clara - Corretora de Imóveis em Arcoverde PE",
+    description:
+      "Encontre os melhores imóveis em Arcoverde com consultoria especializada.",
+    images: ["/logo.png"],
+  },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
+  alternates: {
+    canonical: "https://www.corretoramariaclara.com.br",
+  },
+  verification: {
+    google: "ADICIONE_AQUI_SEU_CODE_DE_VERIFICACAO_GOOGLE",
   },
 };
 
