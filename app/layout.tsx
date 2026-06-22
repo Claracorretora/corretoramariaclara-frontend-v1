@@ -4,6 +4,10 @@ import { Toaster } from "@/components/ui/sonner";
 import { TanstackQueryProvider } from "@/providers/useTanstackQueryProvider";
 import { Urbanist, Cinzel_Decorative } from "next/font/google";
 
+const googleSiteVerification =
+  process.env.GOOGLE_SITE_VERIFICATION ||
+  process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+
 const urbanist = Urbanist({
   subsets: ["latin"],
   variable: "--font-urbanist",
@@ -77,12 +81,11 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  alternates: {
-    canonical: "https://www.corretoramariaclara.com.br",
-  },
-  verification: {
-    google: "ADICIONE_AQUI_SEU_CODE_DE_VERIFICACAO_GOOGLE",
-  },
+  verification: googleSiteVerification
+    ? {
+        google: googleSiteVerification,
+      }
+    : undefined,
 };
 
 export default function RootLayout({

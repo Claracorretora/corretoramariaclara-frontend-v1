@@ -6,8 +6,8 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
       disallow: ['/admin', '/login', '/api'],
-      crawlDelay: 1,
     },
+    host: 'https://www.corretoramariaclara.com.br',
     sitemap: 'https://www.corretoramariaclara.com.br/sitemap.xml',
   }
 }
