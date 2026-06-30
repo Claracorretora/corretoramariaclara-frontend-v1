@@ -8,7 +8,7 @@ export default function HomeCTA() {
     "Olá, vim do site e preciso de ajuda para encontrar um imóvel.";
 
   return (
-    <section className="py-12 text-white bg-muted/50">
+    <section className="py-12 text-white">
       <div className="mx-auto max-w-7xl px-4 xl:px-0">
         <div className="relative bg-clara-quaternary rounded-md p-8 lg:p-12 flex flex-col lg:flex-row items-center gap-6 lg:gap-12">
           <div className="relative w-24 h-24 lg:w-32 lg:h-32 rounded-full overflow-hidden border-4 border-clara-secondary shrink-0">

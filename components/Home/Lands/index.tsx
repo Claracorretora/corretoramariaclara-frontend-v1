@@ -27,7 +27,7 @@ export default function HomeLands() {
   const properties: IProperty[] = data?.data ?? [];
 
   return (
-    <section className="py-10">
+    <section className="py-10 bg-muted/50">
       <div className="mx-auto max-w-7xl px-4 xl:px-0">
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-2xl font-urban">Terrenos para Venda</h2>
