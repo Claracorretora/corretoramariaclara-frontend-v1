@@ -17,11 +17,13 @@ export default function HomeLands() {
   const page = 1;
   const limit = 4;
   const type = "Terreno";
+  const purpose = "Venda";
 
   const { data, isLoading } = useFindAllProperties({
     page,
     limit,
     type,
+    purpose,
   });
 
   const properties: IProperty[] = data?.data ?? [];

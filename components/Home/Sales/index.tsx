@@ -16,11 +16,13 @@ import { useFindAllProperties } from "@/hooks/usePropertyQuery";
 export default function HomeSales() {
   const page = 1;
   const limit = 4;
+  const type = "Casa";
   const purpose = "Venda";
 
   const { data, isLoading } = useFindAllProperties({
     page,
     limit,
+    type,
     purpose,
   });
 
