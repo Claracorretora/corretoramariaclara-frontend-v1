@@ -52,7 +52,7 @@ export default function HomeHero() {
             <div className="flex md:hidden absolute inset-0 items-center justify-center -translate-y-48 -translate-x-20 z-10">
               <Image
                 src="/logo-banner.png"
-                alt="Logo Maria Clara"
+                alt="Logo Maria Clara Mobile"
                 width={150}
                 height={150}
                 priority
@@ -70,7 +70,7 @@ export default function HomeHero() {
             <div className="hidden md:flex absolute inset-0 items-center justify-center -translate-y-28 z-10">
               <Image
                 src="/logo-banner.png"
-                alt="Logo Maria Clara"
+                alt="Logo Maria Clara Desktop"
                 width={450}
                 height={180}
                 priority
