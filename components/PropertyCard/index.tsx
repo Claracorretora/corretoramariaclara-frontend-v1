@@ -5,6 +5,19 @@ import { Bed, Bath, Car, Maximize, MapPin } from "lucide-react";
 import { IProperty } from "@/interfaces/property";
 import { formatCurrency } from "@/utils/format-currency";
 
+const propertyTypeLabels: Record<string, string> = {
+  Casa: "Casa",
+  Apartamento: "Apartamento",
+  "Casa-Condominio": "Casa em Condomínio",
+  Cobertura: "Cobertura",
+  Kitnet: "Kitnet / Loft",
+  "Modelo-Para-Construcao": "Modelo para Construção",
+  "Sala-Comercial": "Sala Comercial",
+  Galpao: "Galpão / Depósito",
+  Terreno: "Terreno / Lote",
+  Chacara: "Chácara / Sítio",
+};
+
 export default function PropertyCard({
   name,
   value,
@@ -63,7 +76,7 @@ export default function PropertyCard({
 
         <p className="text-sm text-muted-foreground mt-3 line-clamp-1 font-urban flex wrap-break-word">
           <MapPin className="h-4 w-4" />
-          {location} - {type}
+          {location} - {propertyTypeLabels[type] ?? type}
         </p>
       </div>
     </div>
