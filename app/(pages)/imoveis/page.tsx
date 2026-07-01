@@ -26,9 +26,9 @@ export function PropertiesContent() {
       <div className="mx-auto max-w-7xl px-4 xl:px-0">
         <h1 className="text-3xl font-urban mb-8">
           {purpose === "Venda"
-            ? "Todos à Venda"
+            ? "Todos Imóveis à Venda"
             : purpose === "Aluguel"
-              ? "Todos para Aluguel"
+              ? "Todos Imóveis para Aluguel"
               : type === "Modelo-Para-Construcao"
                 ? `Todos os Modelos para Construção`
                 : type === "Terreno"

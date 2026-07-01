@@ -16,7 +16,8 @@ import { useFindAllProperties } from "@/hooks/usePropertyQuery";
 export default function HomeRentals() {
   const page = 1;
   const limit = 4;
-  const type = "Casa";
+  const type =
+    "Casa,Apartamento,Casa-Condominio,Cobertura,Kitnet,Sala-Comercial,Galpao,Chacara";
   const purpose = "Aluguel";
 
   const { data, isLoading } = useFindAllProperties({
@@ -35,7 +36,7 @@ export default function HomeRentals() {
           <h2 className="text-2xl font-urban">Imóveis para Locação</h2>
 
           <Link
-            href="/imoveis?purpose=Aluguel"
+            href="/imoveis?purpose=Aluguel&type=Casa,Apartamento,Casa-Condominio,Cobertura,Kitnet,Sala-Comercial,Galpao,Chacara"
             className="flex items-center gap-1 text-sm font-cinzel border-clara-secondary border px-4 py-2 rounded text-clara-secondary hover:border-clara-tertiary hover:text-clara-tertiary transition-colors"
           >
             Ver todos
