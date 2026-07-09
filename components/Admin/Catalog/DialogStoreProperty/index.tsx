@@ -253,51 +253,55 @@ export default function DialogStoreProperty() {
               )}
             </div>
 
-            <div className="space-y-2">
-              <Label>Quartos *</Label>
-              <Input
-                type="number"
-                {...register("bedrooms", {
-                  setValueAs: (value) => (value === "" ? 0 : Number(value)),
-                })}
-              />
+            {watch("type") !== "Terreno" && (
+              <>
+                <div className="space-y-2">
+                  <Label>Quartos *</Label>
+                  <Input
+                    type="number"
+                    {...register("bedrooms", {
+                      setValueAs: (value) => (value === "" ? 0 : Number(value)),
+                    })}
+                  />
 
-              {errors.bedrooms && (
-                <p className="text-sm text-red-500">
-                  {errors.bedrooms.message}
-                </p>
-              )}
-            </div>
+                  {errors.bedrooms && (
+                    <p className="text-sm text-red-500">
+                      {errors.bedrooms.message}
+                    </p>
+                  )}
+                </div>
 
-            <div className="space-y-2">
-              <Label>Banheiros *</Label>
-              <Input
-                type="number"
-                {...register("bathrooms", {
-                  setValueAs: (value) => (value === "" ? 0 : Number(value)),
-                })}
-              />
+                <div className="space-y-2">
+                  <Label>Banheiros *</Label>
+                  <Input
+                    type="number"
+                    {...register("bathrooms", {
+                      setValueAs: (value) => (value === "" ? 0 : Number(value)),
+                    })}
+                  />
 
-              {errors.bathrooms && (
-                <p className="text-sm text-red-500">
-                  {errors.bathrooms.message}
-                </p>
-              )}
-            </div>
+                  {errors.bathrooms && (
+                    <p className="text-sm text-red-500">
+                      {errors.bathrooms.message}
+                    </p>
+                  )}
+                </div>
 
-            <div className="space-y-2">
-              <Label>Garagem *</Label>
-              <Input
-                type="number"
-                {...register("garage", {
-                  setValueAs: (value) => (value === "" ? 0 : Number(value)),
-                })}
-              />
+                <div className="space-y-2">
+                  <Label>Garagem *</Label>
+                  <Input
+                    type="number"
+                    {...register("garage", {
+                      setValueAs: (value) => (value === "" ? 0 : Number(value)),
+                    })}
+                  />
 
-              {errors.garage && (
-                <p className="text-sm text-red-500">{errors.garage.message}</p>
-              )}
-            </div>
+                  {errors.garage && (
+                    <p className="text-sm text-red-500">{errors.garage.message}</p>
+                  )}
+                </div>
+              </>
+            )}
 
             <div className="space-y-2">
               <Label>Metros Quadrados *</Label>

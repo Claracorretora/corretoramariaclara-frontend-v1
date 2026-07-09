@@ -8,6 +8,7 @@ import {
   Home,
   BadgeCheck,
   CircleX,
+  XIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -18,6 +19,22 @@ import { IProperty } from "@/interfaces/property";
 import { Skeleton } from "@/components/ui/skeleton";
 import { formatCurrency } from "@/utils/format-currency";
 import { getYoutubeEmbedUrl } from "@/utils/embed-url";
+import {
+  Carousel,
+  type CarouselApi,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+  DialogTitle,
+  DialogClose,
+} from "@/components/ui/dialog";
+import { useState, useEffect } from "react";
 
 export default function PropertyPage() {
   const { id } = useParams() as { id: string };
@@ -27,6 +44,21 @@ export default function PropertyPage() {
   });
 
   const property: IProperty = data;
+
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    setCurrent(api.selectedScrollSnap());
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
 
   const handleWhatsAppClick = () => {
     const whatsappNumber = "558799380401";
@@ -50,18 +82,8 @@ Configuração: ${property.squareMeters}m², ${property.bedrooms} ${bedroomsLabe
     return (
       <main className="max-w-7xl mx-auto px-4 xl:px-0 py-10 animate-pulse">
         {/* Galeria */}
-        <section className="grid grid-cols-1 md:grid-cols-4 gap-2 h-75 md:h-125 mb-8 rounded-xl overflow-hidden">
-          <div className="md:col-span-2 relative bg-muted rounded-xl">
+        <section className="h-[300px] md:h-[500px] mb-8 rounded-xl overflow-hidden bg-muted relative">
             <Skeleton className="h-full w-full rounded-none" />
-
-            <Skeleton className="absolute bottom-4 left-4 h-10 w-28 rounded-md" />
-          </div>
-
-          <div className="hidden md:grid grid-cols-2 grid-rows-2 gap-2 md:col-span-2">
-            {Array.from({ length: 4 }).map((_, index) => (
-              <Skeleton key={index} className="h-full w-full rounded-none" />
-            ))}
-          </div>
         </section>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -159,68 +181,100 @@ Configuração: ${property.squareMeters}m², ${property.bedrooms} ${bedroomsLabe
   return (
     <main className="max-w-7xl mx-auto px-4 xl:px-0 py-10">
       {/* --- Galeria de Imagens --- */}
-      <section
-        className={`
-        grid gap-2 mb-8 rounded-xl overflow-hidden
-       ${mediaItems.length === 1 ? "grid-cols-1" : "grid-cols-2 md:grid-cols-4"}
-      `}
-      >
-        {mediaItems.slice(0, 5).map((item, index) => {
-          const total = mediaItems.length;
-
-          const dynamicClass = (() => {
-            // Mobile
-            const mobile = total === 1 ? "h-[300px]" : "h-[180px]";
-
-            // Desktop
-            if (total === 1) {
-              return `${mobile} md:col-span-4 md:h-[500px]`;
-            }
-
-            if (total === 2) {
-              return `${mobile} md:col-span-2 md:h-[500px]`;
-            }
-
-            if (total === 3) {
-              return index === 0
-                ? `${mobile} col-span-2 md:col-span-2 md:row-span-2 md:h-[500px]`
-                : `${mobile} md:col-span-2 md:h-[246px]`;
-            }
-
-            if (total === 4) {
-              return index === 0
-                ? `${mobile} col-span-2 md:col-span-2 md:row-span-2 md:h-[500px]`
-                : `${mobile} md:h-[246px]`;
-            }
-
-            return index === 0
-              ? `${mobile} col-span-2 md:col-span-2 md:row-span-2 md:h-[500px]`
-              : `${mobile} md:h-[246px]`;
-          })();
-
-          return (
-            <div
-              key={index}
-              className={`relative overflow-hidden rounded-lg ${dynamicClass}`}
-            >
-              {item.type === "image" ? (
-                <img
-                  src={item.url}
-                  alt={`Imagem ${index + 1}`}
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <iframe
-                  src={getYoutubeEmbedUrl(item.url)}
-                  title="Vídeo do imóvel"
-                  className="w-full h-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              )}
+      <section className="mb-8 relative w-full">
+        <Carousel
+          setApi={setApi}
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          className="w-full"
+        >
+          <CarouselContent>
+            {mediaItems.map((item, index) => (
+              <CarouselItem key={index}>
+                <div className="relative w-full h-[300px] md:h-[500px] rounded-xl overflow-hidden bg-slate-100">
+                  {item.type === "image" ? (
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <button className="w-full h-full relative cursor-zoom-in outline-none">
+                          <img
+                            src={item.url}
+                            alt={`Imagem ${index + 1}`}
+                            className="w-full h-full object-cover transition-transform duration-300"
+                          />
+                        </button>
+                      </DialogTrigger>
+                      <DialogContent 
+                        showCloseButton={false} 
+                        className="max-w-[95vw] md:max-w-6xl h-[90vh] bg-transparent border-none p-0 shadow-none outline-none flex items-center justify-center"
+                      >
+                        <DialogTitle className="sr-only">Visualizar Imagem</DialogTitle>
+                        <div className="relative inline-block max-w-full max-h-full">
+                          <img
+                            src={item.url}
+                            alt={`Imagem Expandida ${index + 1}`}
+                            className="max-w-full max-h-[85vh] object-contain rounded-md"
+                          />
+                          <DialogClose asChild>
+                            <button className="absolute -top-3 -right-3 md:-top-4 md:-right-4 w-8 h-8 md:w-10 md:h-10 bg-white text-slate-800 rounded-full flex items-center justify-center shadow-xl hover:bg-slate-100 transition-colors z-50 cursor-pointer">
+                              <XIcon className="w-4 h-4 md:w-5 md:h-5" />
+                              <span className="sr-only">Fechar</span>
+                            </button>
+                          </DialogClose>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+                  ) : (
+                    <iframe
+                      src={getYoutubeEmbedUrl(item.url)}
+                      title="Vídeo do imóvel"
+                      className="w-full h-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  )}
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          
+          {mediaItems.length > 1 && (
+            <div className="hidden md:block">
+              <CarouselPrevious className="left-4 bg-white/80 hover:bg-white border-none shadow-lg text-slate-800" />
+              <CarouselNext className="right-4 bg-white/80 hover:bg-white border-none shadow-lg text-slate-800" />
             </div>
-          );
-        })}
+          )}
+        </Carousel>
+
+        {/* --- Thumbnails --- */}
+        {mediaItems.length > 1 && (
+          <div className="flex gap-2 mt-4 overflow-x-auto pb-2 snap-x scrollbar-hide">
+            {mediaItems.map((item, index) => (
+              <button
+                key={index}
+                onClick={() => api?.scrollTo(index)}
+                className={`relative w-20 h-20 md:w-24 md:h-24 shrink-0 rounded-md overflow-hidden transition-all snap-start ${
+                  current === index
+                    ? "ring-2 ring-slate-800 opacity-100"
+                    : "opacity-60 hover:opacity-100"
+                }`}
+              >
+                {item.type === "image" ? (
+                  <img
+                    src={item.url}
+                    alt={`Miniatura ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-slate-200 flex items-center justify-center">
+                    <span className="text-[10px] font-bold text-slate-500 uppercase">Vídeo</span>
+                  </div>
+                )}
+              </button>
+            ))}
+          </div>
+        )}
       </section>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -273,29 +327,33 @@ Configuração: ${property.squareMeters}m², ${property.bedrooms} ${bedroomsLabe
               <p className="font-bold font-urban">{property.squareMeters}m²</p>
             </div>
 
-            <div className="flex flex-col items-center gap-1">
-              <Bed size={24} />
-              <span className="text-[10px] uppercase font-urban">
-                {property.bedrooms > 1 ? "Quartos" : "Quarto"}
-              </span>
-              <p className="font-bold font-urban">{property.bedrooms}</p>
-            </div>
+            {property.type !== "Terreno" && (
+              <>
+                <div className="flex flex-col items-center gap-1">
+                  <Bed size={24} />
+                  <span className="text-[10px] uppercase font-urban">
+                    {property.bedrooms > 1 ? "Quartos" : "Quarto"}
+                  </span>
+                  <p className="font-bold font-urban">{property.bedrooms}</p>
+                </div>
 
-            <div className="flex flex-col items-center gap-1">
-              <Bath size={24} />
-              <span className="text-[10px] uppercase font-urban">
-                {property.bathrooms > 1 ? "Banheiros" : "Banheiro"}
-              </span>
-              <p className="font-bold font-urban">{property.bathrooms}</p>
-            </div>
+                <div className="flex flex-col items-center gap-1">
+                  <Bath size={24} />
+                  <span className="text-[10px] uppercase font-urban">
+                    {property.bathrooms > 1 ? "Banheiros" : "Banheiro"}
+                  </span>
+                  <p className="font-bold font-urban">{property.bathrooms}</p>
+                </div>
 
-            <div className="flex flex-col items-center gap-1">
-              <Car size={24} />
-              <span className="text-[10px] uppercase font-urban">
-                {property.garage > 1 ? "Vagas" : "Vaga"}
-              </span>
-              <p className="font-bold font-urban">{property.garage}</p>
-            </div>
+                <div className="flex flex-col items-center gap-1">
+                  <Car size={24} />
+                  <span className="text-[10px] uppercase font-urban">
+                    {property.garage > 1 ? "Vagas" : "Vaga"}
+                  </span>
+                  <p className="font-bold font-urban">{property.garage}</p>
+                </div>
+              </>
+            )}
           </div>
 
           <section>

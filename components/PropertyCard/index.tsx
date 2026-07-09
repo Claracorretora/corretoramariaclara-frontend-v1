@@ -53,20 +53,24 @@ export default function PropertyCard({
         </p>
 
         <div className="flex flex-wrap gap-4 mt-4 text-muted-foreground">
-          <div className="flex items-center gap-1">
-            <Bed className="h-4 w-4" />
-            <span className="text-sm">{bedrooms}</span>
-          </div>
+          {type !== "Terreno" && (
+            <>
+              <div className="flex items-center gap-1">
+                <Bed className="h-4 w-4" />
+                <span className="text-sm">{bedrooms}</span>
+              </div>
 
-          <div className="flex items-center gap-1">
-            <Bath className="h-4 w-4" />
-            <span className="text-sm">{bathrooms}</span>
-          </div>
+              <div className="flex items-center gap-1">
+                <Bath className="h-4 w-4" />
+                <span className="text-sm">{bathrooms}</span>
+              </div>
 
-          <div className="flex items-center gap-1">
-            <Car className="h-4 w-4" />
-            <span className="text-sm">{garage}</span>
-          </div>
+              <div className="flex items-center gap-1">
+                <Car className="h-4 w-4" />
+                <span className="text-sm">{garage}</span>
+              </div>
+            </>
+          )}
 
           <div className="flex items-center gap-1">
             <Maximize className="h-4 w-4" />
